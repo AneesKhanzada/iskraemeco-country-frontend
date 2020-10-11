@@ -1,0 +1,36 @@
+<nav *ngIf = "country" class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">{{country.name}}</span>
+</nav>
+<div *ngIf="!country" class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div class="navbar-brand mb-0 h1">No Country Found!</div>
+    
+    <div>
+        <button *ngIf="!country" routerLink = "/countries" type="button" class="btn btn-light backbtn ">Back to Country List</button>
+    </div>
+</div>
+<div *ngIf="country" class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Continent</th>
+            <th scope="col">Population</th>
+            <th scope="col">Life Expectancy</th>
+            <th scope="col">Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class = "tabrow">
+            <th scope="row">{{country.name}}</th>
+          <td>{{country.continent}}</td>
+          <td *ngIf = "country.population !== 0">{{country.population}}</td>
+          <td *ngIf = "country.population === 0" class = "emptyData">Not Available</td>
+          <td *ngIf = "country.life_expectancy">{{country.life_expectancy}}</td>
+          <td *ngIf = "!country.life_expectancy" class = "emptyData">Not Available</td>
+          <td *ngIf = "country.country_language">{{country.country_language}}</td>
+          <td *ngIf = "!country.country_language" class = "emptyData">Not Available</td>
+        </tr>
+        </tbody>
+    </table>
+    <button routerLink = "/countries" type="button" class="btn btn-light backbtn ">Back to Country List</button>
+</div>
